@@ -1,9 +1,21 @@
-import styles from './index.css';
+import React from 'react';
+import { List } from 'antd-mobile';
+import { Link } from 'umi';
 
-export default function() {
+const Index = () => {
   return (
-    <div className={styles.normal}>
-      <h1>Page index</h1>
+    <div>
+      <h1>class demo</h1>
+      <List>
+        <List.Item>
+          <Link to="/class/component-old">component-old</Link>
+        </List.Item>
+        <List.Item>
+          <Link to="/class/component-new">component-new</Link>
+        </List.Item>
+      </List>
     </div>
   );
-}
+};
+
+export default Index;
