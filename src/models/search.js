@@ -11,7 +11,8 @@ export default {
     getLists(state, action) {
       return {
         ...state,
-        lists: Array(10).fill(action.payload),
+        // lists: Array(10).fill(action.payload),
+        lists: action.payload,
       }
     },
   },

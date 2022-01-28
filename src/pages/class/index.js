@@ -1,6 +1,6 @@
-import React from 'react';
-import { List } from 'antd-mobile';
-import { Link } from 'umi';
+import React from 'react'
+import { List } from 'antd-mobile'
+import { Link } from 'umi'
 
 const Index = () => {
   return (
@@ -16,9 +16,15 @@ const Index = () => {
         <List.Item>
           <Link to="/class/dva">dva</Link>
         </List.Item>
+        <List.Item>
+          <Link to="/class/context">context</Link>
+        </List.Item>
+        <List.Item>
+          <Link to="/class/lazy-load">lazy-load</Link>
+        </List.Item>
       </List>
     </div>
-  );
-};
+  )
+}
 
-export default Index;
+export default Index
