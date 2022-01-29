@@ -28,7 +28,7 @@ export default {
       {
         antd: true,
         dva: true,
-        dynamicImport: false,
+        dynamicImport: true,
         title: 'umi3',
         dll: false,
         routes: {
@@ -37,4 +37,4 @@ export default {
       },
     ],
   ],
-};
+}
