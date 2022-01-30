@@ -22,6 +22,9 @@ const Index = () => {
         <List.Item>
           <Link to="/class/lazy-load">lazy-load</Link>
         </List.Item>
+        <List.Item>
+          <Link to="/class/modal">modal</Link>
+        </List.Item>
       </List>
     </div>
   )
