@@ -25,6 +25,9 @@ const Index = () => {
         <List.Item>
           <Link to="/class/modal">modal</Link>
         </List.Item>
+        <List.Item>
+          <Link to="/function/customize">customize</Link>
+        </List.Item>
       </List>
     </div>
   )

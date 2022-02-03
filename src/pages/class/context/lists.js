@@ -6,10 +6,10 @@ const Lists = props => {
   const { text, lists } = props
 
   const context = SearchContext
-  console.log('cc', context)
+  console.log('SearchContext', context)
   // const { text, lists } = context.state
 
-  console.log(this)
+  // console.log(this)
   return (
     <div>
       {/* <h1>text:{text}</h1>

@@ -16,7 +16,7 @@ const Search = props => {
   //   })
   // }
   const handleSubmit = () => {
-    console.log('props', value)
+    console.log('handleSubmit props', value)
     props.dispatch({
       type: 'search/getListsAsync',
       payload: value,

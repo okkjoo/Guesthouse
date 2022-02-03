@@ -2,7 +2,7 @@ import React from 'react'
 import { List } from 'antd-mobile'
 
 const Lists = props => {
-  console.log(props.search)
+  // console.log(props.search)
 
   const { text, lists } = props.search
   return (
