@@ -10,7 +10,8 @@
   "dependencies": {
     "antd-mobile": "^5.0.0-rc.25",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "think-react-store": "^1.6.71"
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",
