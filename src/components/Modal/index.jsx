@@ -1,6 +1,6 @@
 import React from 'react'
 import CreateProtal from '../CreatePortal'
-import { Icon } from 'antd-mobile'
+import { Icon } from 'antd-mobile/es'
 const Styles = {
   modal: {
     position: 'relative',
