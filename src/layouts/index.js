@@ -1,10 +1,17 @@
-import styles from './index.css'
-import ErrorBoundary from '../components/ErrorBoundary'
+import { ErrorBoundary, MenuBar } from '@/components'
+import { useLocation } from 'react-router-dom'
 
 function BasicLayout(props) {
+  const location = useLocation()
+  // console.log(location)
+  const paths = ['/', '/order', '/user']
+  // console.log(paths.includes(location.pathname))
   return (
-    <div className={styles.normal}>
-      <h1 className={styles.title}>Yay! Welcome to umi!</h1>
+    <div>
+      <MenuBar
+        show={paths.includes(location.pathname)}
+        pathname={location.pathname}
+      />
       <ErrorBoundary>{props.children}</ErrorBoundary>
     </div>
   )

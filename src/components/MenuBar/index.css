@@ -1,0 +1,30 @@
+.hidden {
+  display: none;
+}
+.menubar-icon {
+  font-size: '100rem';
+}
+.menu-bar .tab-bar {
+  position: relative;
+  overflow: visible !important;
+}
+.menu-bar .tabs {
+  width: 100%;
+  overflow: visible !important;
+}
+.menu-bar .tabs-pane-wrap {
+  overflow-y: visible !important;
+}
+.menu-bar .tab-bar-item {
+  height: auto !important;
+}
+.menu-bar .tabs-tab-bar-wrap {
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 10;
+}
