@@ -28,6 +28,10 @@ body {
   background-color: #fff;
   margin-right: 20px;
 }
+.home .search .search-button {
+  font-size: 14px;
+  font-weight: 550;
+}
 .home .search .list-item .home .search .list-line .home .search .list-content .home .search .list-extra {
   font-size: 18px;
 }

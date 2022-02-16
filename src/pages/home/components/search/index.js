@@ -83,7 +83,9 @@ export default function(props) {
         <p className="search-time_right">{times}</p>
       </div>
       {/* 点击按钮 */}
-
+      <Button color="warning" block className="search-button">
+        搜索民宿
+      </Button>
       <Calendar
         selectionMode="range"
         onChange={value => handleTimeSelect(value)}
