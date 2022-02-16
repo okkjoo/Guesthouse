@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "antd-mobile": "^5.0.0-rc.25",
+    "dayjs": "^1.10.7",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-icons": "^4.3.1",

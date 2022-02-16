@@ -4,6 +4,9 @@
 .menubar-icon {
   font-size: '100rem';
 }
+.menu-bar {
+  background-color: aqua;
+}
 .menu-bar .tab-bar {
   position: relative;
   overflow: visible !important;
@@ -16,6 +19,7 @@
   overflow-y: visible !important;
 }
 .menu-bar .tab-bar-item {
+  background-color: #fff;
   height: auto !important;
 }
 .menu-bar .tabs-tab-bar-wrap {
