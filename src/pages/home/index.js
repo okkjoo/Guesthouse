@@ -2,12 +2,18 @@ import React, { useState, useEffect } from 'react'
 import Header from './components/header'
 import Search from './components/search'
 import Hot from './components/hot'
+import { useHttpHook } from '@/hooks'
 
 import './index.less'
 
 export default function(props) {
-  const [state, setState] = useState()
-
+  const [citys, citysLoading] = useHttpHook({
+    url: '/commons/citys',
+  })
+  const [houses] = useHttpHook({
+    url: '/houses/hot',
+  })
+  // !citysLoading && console.log('citys', citys[0])
   useEffect(() => {}, [])
 
   return (
@@ -15,9 +21,9 @@ export default function(props) {
       {/* header登录区 */}
       <Header />
       {/* search搜索 */}
-      <Search />
+      <Search citys={citys} citysLoading={citysLoading} />
       {/* 热门民宿 */}
-      <Hot />
+      <Hot houses={houses} />
     </div>
   )
 }

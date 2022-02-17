@@ -3,24 +3,25 @@ import { Picker, Button, Calendar } from 'antd-mobile/es'
 import dayjs from 'dayjs'
 
 export default function(props) {
+  const { citys, citysLoading } = props
   const [cityShow, setCityShow] = useState(false)
   const [timeShow, setTimeShow] = useState(false)
-  const [citys] = useState([
-    [
-      {
-        label: '杭州',
-        value: 'hangzhou',
-      },
-      {
-        label: '深圳',
-        value: 'shenzhen',
-      },
-      {
-        label: '广州',
-        value: 'guangzhou',
-      },
-    ],
-  ])
+  // const [citys] = useState([
+  //   [
+  //     {
+  //       label: '杭州',
+  //       value: 'hangzhou',
+  //     },
+  //     {
+  //       label: '深圳',
+  //       value: 'shenzhen',
+  //     },
+  //     {
+  //       label: '广州',
+  //       value: 'guangzhou',
+  //     },
+  //   ],
+  // ])
   const [selectedCity, setSelectedCity] = useState(['shenzhen'])
 
   const [times, setTimes] = useState('可选时间')
@@ -57,21 +58,23 @@ export default function(props) {
         >
           可选城市
         </Button>
-        <Picker
-          title="城市"
-          columns={citys}
-          value={selectedCity}
-          visible={cityShow}
-          onClose={() => {
-            setCityShow(false)
-          }}
-          onConfirm={handleCitySelect}
-        />
+        {
+          <Picker
+            title="城市"
+            columns={!citysLoading ? citys : [[]]}
+            value={selectedCity}
+            visible={!citysLoading && cityShow}
+            onClose={() => {
+              setCityShow(false)
+            }}
+            onConfirm={handleCitySelect}
+          />
+        }
+
         <div id="select-addr">
-          {
+          {citys &&
             citys[0].find(item => selectedCity.includes(item.value))
-              .label
-          }
+              .label}
         </div>
       </div>
       {/* 可选时间 */}

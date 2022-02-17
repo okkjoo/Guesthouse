@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Toast } from 'antd-mobile'
+// import { Toast } from 'antd-mobile/es'
 
 const useHttpHook = ({
   url, //请求路径
@@ -42,20 +42,20 @@ const useHttpHook = ({
             resolve(res.data)
             setResult(res.data)
           } else {
-            Toast.show({
-              icon: 'fail',
-              content: res.errMsg,
-            })
-
+            // Toast.show({
+            //   icon: 'fail',
+            //   content: res.errMsg,
+            // })
             reject(res.errMsg)
           }
         })
         .catch(err => {
-          Toast.show(err)
-          Toast.show({
-            icon: 'fail',
-            content: err,
-          })
+          // Toast.show(err)
+          // Toast.show({
+          //   icon: 'fail',
+          //   content: err,
+          // })
+          console.log(err)
           reject(err)
         })
         .finally(() => {
