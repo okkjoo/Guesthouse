@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Picker, Button, Calendar } from 'antd-mobile/es'
+import { Picker, Button, Calendar, Toast } from 'antd-mobile/es'
 import dayjs from 'dayjs'
+import { useHistory } from 'react-router-dom'
 
 export default function(props) {
   const { citys, citysLoading } = props
@@ -36,7 +37,25 @@ export default function(props) {
         ' ~ ' +
         dayjs(value[1]).format('YYYY-MM-DD'),
     )
-    console.log(value[0])
+    // console.log(value[0])
+  }
+  const history = useHistory()
+  const handleSearchClick = () => {
+    if (!times.includes('~')) {
+      Toast.show({
+        icon: 'fail',
+        content: '请选择时间',
+      })
+      return
+    }
+    history.push({
+      pathname: '/search',
+      query: {
+        code: selectedCity,
+        startTime: times.split('~')[0],
+        endTime: times.split('~')[1],
+      },
+    })
   }
   // console.log(selectedCity.includes('shenzhen'))
   // citys[0].forEach(item => {
@@ -86,8 +105,13 @@ export default function(props) {
         <p className="search-time_right">{times}</p>
       </div>
       {/* 点击按钮 */}
-      <Button color="warning" block className="search-button">
-        搜索民宿
+      <Button
+        color="warning"
+        block
+        className="search-button"
+        onClick={handleSearchClick}
+      >
+        搜索酒店
       </Button>
       <Calendar
         selectionMode="range"

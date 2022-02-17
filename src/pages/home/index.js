@@ -22,7 +22,7 @@ export default function(props) {
       <Header />
       {/* search搜索 */}
       <Search citys={citys} citysLoading={citysLoading} />
-      {/* 热门民宿 */}
+      {/* 热门酒店 */}
       <Hot houses={houses} />
     </div>
   )
