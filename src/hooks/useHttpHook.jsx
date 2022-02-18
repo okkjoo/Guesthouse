@@ -11,11 +11,10 @@ const useHttpHook = ({
   // eslint-disable-next-line no-unused-vars
   const [result, setResult] = useState()
   // eslint-disable-next-line no-unused-vars
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
 
   const Http = async () => {
     setLoading(true)
-
     const defaultHeader = {
       'Content-Type': 'application/json',
     }
@@ -33,35 +32,40 @@ const useHttpHook = ({
         body: JSON.stringify(body),
       }
     }
-
-    return new Promise((resolve, reject) => {
-      fetch('/api' + url, params)
-        .then(res => res.json())
-        .then(res => {
-          if (res.status === 200) {
-            resolve(res.data)
-            setResult(res.data)
-          } else {
-            // Toast.show({
-            //   icon: 'fail',
-            //   content: res.errMsg,
-            // })
-            reject(res.errMsg)
-          }
+    // 节流
+    let mark = true
+    mark &&
+      setTimeout(() => {
+        return new Promise((resolve, reject) => {
+          fetch('/api' + url, params)
+            .then(res => res.json())
+            .then(res => {
+              if (res.status === 200) {
+                resolve(res.data)
+                setResult(res.data)
+              } else {
+                // Toast.show({
+                //   icon: 'fail',
+                //   content: res.errMsg,
+                // })
+                reject(res.errMsg)
+              }
+            })
+            .catch(err => {
+              // Toast.show(err)
+              // Toast.show({
+              //   icon: 'fail',
+              //   content: err,
+              // })
+              console.log(err)
+              reject(err)
+            })
+            .finally(() => {
+              setLoading(false)
+            })
         })
-        .catch(err => {
-          // Toast.show(err)
-          // Toast.show({
-          //   icon: 'fail',
-          //   content: err,
-          // })
-          console.log(err)
-          reject(err)
-        })
-        .finally(() => {
-          setLoading(false)
-        })
-    })
+      }, 10)
+    mark = false
   }
 
   useEffect(() => {
