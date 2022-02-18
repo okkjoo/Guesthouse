@@ -1,15 +1,16 @@
 body {
   background-color: #f5f4f9;
 }
-.search-page search {
+.search-page .search {
   position: fixed;
   width: 100%;
+  background-color: #f5f4f9;
   left: 0;
   top: 0;
 }
 .search-page .result {
   width: 100%;
-  margin-top: 20px;
+  margin-top: 40px;
   padding: 10px;
   box-sizing: border-box;
 }

@@ -9,16 +9,20 @@ export default function useObserverHook(
   watch = [],
 ) {
   useEffect(() => {
-    observer = new IntersectionObserver(entries => {
-      callback && callback(entries)
-    })
-    const listened = document.querySelector(selector)
-    observer.observe(listened)
+    const listenedNode = document.querySelector(selector)
+    if (listenedNode) {
+      observer = new IntersectionObserver(entries => {
+        typeof callback === 'function' && callback(entries)
+      })
+      observer.observe(listenedNode)
+      // console.log('in???')
+    }
 
     return () => {
-      if (observer) return
-      observer.unobserve(selector)
-      observer.disconnect()
+      if (observer && listenedNode) {
+        observer.unobserve(listenedNode)
+        observer.disconnect()
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, watch)
