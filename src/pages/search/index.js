@@ -2,16 +2,15 @@ import React, { useState, useEffect } from 'react'
 import { SearchBar, SpinLoading } from 'antd-mobile/es'
 import { useHttpHook, useObserverHook, useImgHook } from '@/hooks'
 import { useLocation } from 'react-router-dom'
+import { ShowLoading } from '@/components'
+import { CommonEnum } from '@/enums'
 
 import './index.less'
 
 export default function(props) {
   const { query } = useLocation() // 获取参数
   const [houseName, setHouseName] = useState('') // 搜索框输入的内容
-  const [page, setPage] = useState({
-    pageSize: 8, // 新的一页的最大容量
-    pageNum: 1, // 当前页码
-  })
+  const [page, setPage] = useState(CommonEnum.PAGE)
   const [housesLists, setHousesLists] = useState([]) // 当前展示酒店列表
   const [showLoading, setShowLoading] = useState(true) // 监听是否到底部了
   const [houseSubmitName, setHouseSubmitName] = useState('') // 搜索框回车或点击取消后上传的内容
@@ -32,7 +31,7 @@ export default function(props) {
   // console.log('house', houses)
   // console.log('house')
   useObserverHook(
-    '#loading', // 要监听的 DOM 元素
+    `#${CommonEnum.LOADING_ID}`, // 要监听的 DOM 元素
     // 执行的回调函数
     entries => {
       // console.log('a')
@@ -64,10 +63,7 @@ export default function(props) {
     console.log(housesLists)
     setHouseName(value)
     setHouseSubmitName(value)
-    setPage({
-      pageSize: 8,
-      pageNum: 1,
-    })
+    setPage(CommonEnum.PAGE)
   }
   // 取消搜索的回调函数
   const handleCancel = () => {
@@ -143,27 +139,10 @@ export default function(props) {
             <SpinLoading color="primary" />
           </div>
         )}
-        {showLoading ? (
-          <div
-            id="loading"
-            style={{
-              margin: '0 auto',
-              width: '10%',
-              height: '10px',
-            }}
-          >
-            <SpinLoading color="primary" />
-          </div>
-        ) : (
-          <div
-            style={{
-              margin: '0 auto',
-              width: 'max-content',
-            }}
-          >
-            已经到底部了~
-          </div>
-        )}
+        <ShowLoading
+          id={CommonEnum.LOADING_ID}
+          showLoading={showLoading}
+        />
       </div>
     </div>
   )
