@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { SearchBar, SpinLoading } from 'antd-mobile/es'
-import { useHttpHook, useObserverHook } from '@/hooks'
+import { useHttpHook, useObserverHook, useImgHook } from '@/hooks'
 import { useLocation } from 'react-router-dom'
 
 import './index.less'
@@ -50,6 +50,8 @@ export default function(props) {
     // 请求状态改变的时候调用
     [loading],
   )
+
+  useImgHook('.item-img', entries => {}, null)
 
   // 与页面中输入框的显示绑定
   const handleChange = value => {
@@ -118,7 +120,12 @@ export default function(props) {
         {!loading || housesLists ? (
           housesLists?.map(item => (
             <div className="item" key={item.id}>
-              <img alt="img" src={item.img} />
+              <img
+                alt="img"
+                className="item-img"
+                data-src={item.img}
+                src={require('../../assets/hui.png')}
+              />
               <div className="item-right">
                 <div className="title">{item.title}</div>
                 <div className="price">￥{item.price}</div>
