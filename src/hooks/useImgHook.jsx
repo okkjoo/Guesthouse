@@ -1,4 +1,6 @@
 import { useEffect } from 'react'
+import { isEmpty } from '@/utils'
+
 /**
  *
  * @param {DOM元素} ele
@@ -11,7 +13,7 @@ let observer
 const useImgHook = (ele, callback, watch = []) => {
   useEffect(() => {
     const nodes = document.querySelectorAll(ele)
-    if (nodes && nodes.length) {
+    if (!isEmpty(nodes)) {
       observer = new IntersectionObserver(entries => {
         callback && callback(entries)
         entries.forEach(item => {
@@ -30,7 +32,7 @@ const useImgHook = (ele, callback, watch = []) => {
       })
     }
     return () => {
-      if (nodes && nodes.length && observer) {
+      if (!isEmpty(nodes) && observer) {
         observer.disconnect()
       }
     }
