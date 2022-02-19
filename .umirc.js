@@ -27,6 +27,11 @@ export default {
           component: './search/index',
           title: '搜索',
         },
+        {
+          path: '/house',
+          component: './house',
+          title: '酒店详情',
+        },
       ],
     },
   ],

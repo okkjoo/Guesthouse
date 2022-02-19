@@ -1,0 +1,44 @@
+body {
+  background-color: #f5f4f9;
+}
+.house-page .comment-title {
+  font-size: 28px;
+}
+.house-page .comment-lists * {
+  padding-bottom: 5px;
+}
+.house-page .comment-lists_item .avatar {
+  width: 100px;
+}
+.house-page .banner {
+  width: 100%;
+}
+.house-page .banner img {
+  width: 100%;
+  object-fit: cover;
+  height: 180px;
+}
+.house-page .info {
+  background-color: white;
+  margin: 10px;
+  padding: 10px;
+  font-size: 14px;
+}
+.house-page .info * {
+  padding-bottom: 5px;
+}
+.house-page .info-title {
+  font-size: 19px;
+  font-weight: 550;
+  padding-bottom: 10px;
+}
+.house-page .info-msg {
+  padding-bottom: 10px;
+}
+.house-page .info-btn {
+  width: 100%;
+  font-size: 16px;
+  font-weight: 550;
+  border: none;
+  border-radius: 5px;
+}
