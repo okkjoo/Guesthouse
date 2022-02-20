@@ -1,6 +1,8 @@
 import React from 'react'
 import CreateProtal from '../CreatePortal'
-import { Icon } from 'antd-mobile/es'
+import { AiFillCloseCircle } from 'react-icons/ai'
+import { useEffect } from 'react'
+import { useState } from 'react'
 const Styles = {
   modal: {
     position: 'relative',
@@ -20,29 +22,42 @@ const Styles = {
     justifyContent: 'center',
   },
   close: {
-    position: 'fixed',
-    top: '10px',
-    right: '10px',
+    position: 'absolute',
+    top: '5px',
+    right: '5px',
   },
 }
 
 const Modal = props => {
-  const { children, show } = props
+  const { children, show, styleBody, styleClose, onClose } = props
+  const [showModal, setShowModal] = useState(false)
+
+  useEffect(() => {
+    setShowModal(show)
+  }, [show])
 
   const handleClose = () => {
-    const { onClose } = props
-    onClose && onClose()
+    setShowModal(false)
+    onClose(false)
+  }
+  const _styleBody = {
+    ...Styles.body,
+    ...styleBody,
+  }
+  const _styleClose = {
+    ...Styles.close,
+    ...styleClose,
   }
   return (
     <>
-      {show ? (
-        <CreateProtal style={Styles.modal}>
-          <div style={Styles.body}>
+      {showModal ? (
+        <CreateProtal>
+          <div style={_styleBody}>
             {children}
-            <Icon
-              type="cross"
-              size="lg"
-              style={Styles.close}
+            <AiFillCloseCircle
+              // type="cross"
+              fontSize={20}
+              style={_styleClose}
               onClick={handleClose}
             />
           </div>

@@ -1,6 +1,26 @@
 body {
   background-color: #f5f4f9;
 }
+.modal-comment {
+  width: 90%;
+}
+.modal-comment .text-area {
+  border: 1px solid #d9d8db;
+}
+.modal-comment-btn {
+  margin-top: 10px;
+  width: 100%;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+}
+.house-page .footer {
+  background-color: white;
+  margin: 10px;
+  padding: 10px;
+  color: #a2a2a2;
+  border-radius: 10px;
+}
 .house-page .comment-title {
   font-size: 28px;
 }
