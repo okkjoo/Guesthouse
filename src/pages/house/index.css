@@ -5,10 +5,31 @@ body {
   font-size: 28px;
 }
 .house-page .comment-lists * {
-  padding-bottom: 5px;
+  margin-bottom: 5px;
+  padding: 2px 0;
+}
+.house-page .comment-lists_item {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  background-color: white;
+  margin: 10px;
 }
 .house-page .comment-lists_item .avatar {
-  width: 100px;
+  margin: auto 10px;
+  width: 60px;
+  height: fit-content;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.house-page .comment-lists_item .right {
+  margin-right: 10px;
+}
+.house-page .comment-lists_item .right-top {
+  display: flex;
+  justify-content: space-between;
+}
+.house-page .comment-lists_item .right-bottom {
+  color: #a2a2a2;
 }
 .house-page .banner {
   width: 100%;
