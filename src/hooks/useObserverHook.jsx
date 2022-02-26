@@ -2,7 +2,12 @@ import { useEffect } from 'react'
 
 let observer = undefined
 
-// 传入要监听的DOM元素 ele, 监听元素的回调函数 callback, useEffect 的依赖项
+/**
+ *
+ * @param {待监听元素 DOM 选择器} selector
+ * @param {监听元素的回调函数} callback
+ * @param {Hook内部useEffect的依赖项} watch
+ */
 export default function useObserverHook(
   selector,
   callback,

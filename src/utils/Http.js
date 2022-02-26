@@ -45,7 +45,7 @@ export default function Http({
       .catch(err => {
         Toast.show({
           icon: 'fail',
-          content: err,
+          content: err.toString(),
         })
         reject(err)
       })

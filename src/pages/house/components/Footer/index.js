@@ -1,9 +1,15 @@
 import React, { useState } from 'react'
 import { Modal } from '@/components'
-import { TextArea, Button } from 'antd-mobile/es'
+import { TextArea, Button, Toast } from 'antd-mobile/es'
+import { useStoreHook } from 'think-react-store'
 
 const Footer = () => {
+  console.log('aaa')
   const [show, setShow] = useState(false)
+  // const [commentValue, setCommentValue] = useState('')
+  const {
+    house: { addCommentsAsync, getCommentsAsync },
+  } = useStoreHook()
 
   const handleClick = () => {
     setShow(!show)
@@ -14,7 +20,25 @@ const Footer = () => {
     setShow(false)
   }
 
-  const handleChange = value => {}
+  // const handleChange = value => {
+  //   // setCommentValue(value)
+  // }
+  const handleSubmit = () => {
+    const commentValue = document.querySelector('textarea').value
+    console.log(commentValue)
+    if (commentValue) {
+      addCommentsAsync({
+        commentValue,
+      })
+      handleClose()
+      getCommentsAsync({})
+    } else {
+      Toast.show({
+        icon: 'fail',
+        content: '请输入非空的评论内容~',
+      })
+    }
+  }
   return (
     <>
       <div className="footer" onClick={handleClick}>
@@ -37,9 +61,14 @@ const Footer = () => {
             rows={3}
             maxLength={200}
             showCount
-            onChange={handleChange}
+            // onChange={val => setCommentValue(val)}
+            // value={commentValue}
           />
-          <Button className="modal-comment-btn" color="warning">
+          <Button
+            onClick={handleSubmit}
+            className="modal-comment-btn"
+            color="warning"
+          >
             评 论
           </Button>
         </div>

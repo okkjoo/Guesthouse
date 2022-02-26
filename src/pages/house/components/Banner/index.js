@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import AwesomeSwiper from 'react-awesome-swiper'
 
-const Banner = () => {
+const Banner = props => {
   const [config] = useState({
     // 循环
     loop: true,
@@ -18,24 +18,11 @@ const Banner = () => {
   return (
     <AwesomeSwiper className="banner" config={config}>
       <div className="swiper-wrapper">
-        <div className="swiper-slide">
-          <img
-            alt="banner"
-            src="https://dimg04.c-ctrip.com/images/20050a0000004ec6k2FF7_R_300_225_R5_Q70_D.jpg"
-          />
-        </div>
-        <div className="swiper-slide">
-          <img
-            alt="banner"
-            src="https://dimg04.c-ctrip.com/images/20050a0000004ec6k2FF7_R_300_225_R5_Q70_D.jpg"
-          />
-        </div>
-        <div className="swiper-slide">
-          <img
-            alt="banner"
-            src="https://dimg04.c-ctrip.com/images/20050a0000004ec6k2FF7_R_300_225_R5_Q70_D.jpg"
-          />
-        </div>
+        {props?.banner?.map(banner => (
+          <div className="swiper-slide" key={banner.id}>
+            <img alt="banner" src={banner.src} />
+          </div>
+        ))}
       </div>
       <div className="swiper-pagination"></div>
     </AwesomeSwiper>
