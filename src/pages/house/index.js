@@ -6,6 +6,7 @@ import Info from './components/Info'
 import { useStoreHook } from 'think-react-store'
 import { useObserverHook } from '@/hooks'
 import { CommonEnum } from '@/enums'
+import { useLocation } from 'react-router-dom'
 
 import './index.less'
 
@@ -19,8 +20,11 @@ const House = () => {
       getDetailAsync,
       getCommentsAsync,
       reloadComments,
+      resetData,
     },
   } = useStoreHook()
+
+  const { query } = useLocation()
 
   useObserverHook(
     `#${CommonEnum.LOADING_ID}`,
@@ -42,14 +46,25 @@ const House = () => {
   )
 
   useEffect(() => {
-    getDetailAsync({})
+    getDetailAsync({
+      id: query?.id,
+    })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   useEffect(() => {
-    getCommentsAsync({})
+    getCommentsAsync({
+      id: query?.id,
+    })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reloadCommentsNum]) //监听reloadCommentsNum
-
+  useEffect(() => {
+    return () => {
+      resetData({
+        detail: {},
+      })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   return (
     <div className="house-page">
       {/* 顶部 banner */}

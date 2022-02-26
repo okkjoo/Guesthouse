@@ -4,7 +4,7 @@ import { TextArea, Button, Toast } from 'antd-mobile/es'
 import { useStoreHook } from 'think-react-store'
 
 const Footer = () => {
-  console.log('aaa')
+  // console.log('aaa')
   const [show, setShow] = useState(false)
   // const [commentValue, setCommentValue] = useState('')
   const {
