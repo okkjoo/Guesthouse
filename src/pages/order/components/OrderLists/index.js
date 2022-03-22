@@ -2,8 +2,10 @@ import React from 'react'
 import OrderItem from '../OrderItem'
 import { SpinLoading } from 'antd-mobile/es'
 import { isEmpty } from '@/utils'
+import { ShowLoading } from '@/components'
 
 const OrderLists = props => {
+  console.log(props.showLoading)
   return (
     <div>
       {isEmpty(props?.orders) ? (
@@ -19,6 +21,11 @@ const OrderLists = props => {
           ))}
         </div>
       )}
+      <ShowLoading
+        style={{ marginBottom: '20px', height: '100px' }}
+        showLoading={props.showLoading}
+        // showLoading={true}
+      />
     </div>
   )
 }
