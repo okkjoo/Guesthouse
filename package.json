@@ -10,6 +10,7 @@
   "dependencies": {
     "antd-mobile": "^5.0.0-rc.25",
     "dayjs": "^1.10.7",
+    "rc-form": "^2.4.12",
     "react": "^16.8.6",
     "react-awesome-swiper": "^1.4.16",
     "react-dom": "^16.8.6",
