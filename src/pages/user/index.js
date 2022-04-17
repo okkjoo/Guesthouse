@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { List } from 'antd-mobile/es'
 import { useHistory } from 'react-router-dom'
-
+import { useStoreHook } from 'think-react-store'
 import './index.less'
 
 export default function(props) {
-  const [state, setState] = useState()
+  const {
+    user: { username, avatar, tel, sign, getUserAsync },
+  } = useStoreHook()
   const history = useHistory()
   const handleClick = () => {
     history.push({
@@ -13,7 +15,11 @@ export default function(props) {
       query: {},
     })
   }
-  useEffect(() => {}, [])
+  useEffect(() => {
+    getUserAsync({
+      id: 15,
+    })
+  }, [getUserAsync])
 
   return (
     <div className="user-page">
@@ -23,14 +29,9 @@ export default function(props) {
           设置
         </div>
         <div className="user">
-          <img
-            alt="user"
-            src={
-              'https://gitee.com/okkjoo/image-bed/raw/master/imgs/icon001.jpg'
-            }
-          />
-          <div className="tel">{'tel'}</div>
-          <div className="sign">{'sign'}</div>
+          <img alt="user" src={avatar} />
+          <div className="tel">{tel}</div>
+          <div className="sign">{sign}</div>
         </div>
       </div>
       {/* 列表 */}

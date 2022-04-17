@@ -7,10 +7,15 @@ import {
   Button,
 } from 'antd-mobile/es'
 import { createForm } from 'rc-form'
+import { useStoreHook } from 'think-react-store'
 
 function Edit(props) {
   const [fileList, setFileList] = useState([])
   const { getFieldProps, validateFields } = props.form
+  const {
+    user: { editUserAsync },
+  } = useStoreHook()
+
   const beforeUpload = file => {
     if (file[0]?.size > 1024 * 1024 * 1) {
       Toast.show('请选择小于 1M 的图片')
@@ -26,10 +31,17 @@ function Edit(props) {
     //   return
     // }
     validateFields((err, val) => {
+      console.log(fileList)
       if (err) {
         Toast.show('信息不能为空')
         return
       } else {
+        // console.log(val)
+        editUserAsync({
+          img: fileList[0]?.file,
+          tel: val.tel,
+          sign: val.sign,
+        })
       }
     })
   }
