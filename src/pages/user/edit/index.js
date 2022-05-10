@@ -31,7 +31,7 @@ function Edit(props) {
     //   return
     // }
     validateFields((err, val) => {
-      console.log(fileList)
+      // console.log(fileList)
       if (err) {
         Toast.show('信息不能为空')
         return

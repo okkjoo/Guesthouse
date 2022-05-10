@@ -54,5 +54,14 @@ export default {
         router.push('/user')
       }
     },
+    async loginAsync(dispatch, rootState, payload) {
+      const res = await Http({
+        url: '/user/login',
+        body: payload,
+      })
+      if (res) {
+        Toast.show('登录成功')
+      }
+    },
   },
 }

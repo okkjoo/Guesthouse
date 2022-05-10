@@ -37,6 +37,16 @@ export default {
           component: './house',
           title: '酒店详情',
         },
+        {
+          path: '/login',
+          component: './login',
+          title: '登录',
+        },
+        {
+          path: '/register',
+          component: './register',
+          title: '注册',
+        },
       ],
     },
   ],
