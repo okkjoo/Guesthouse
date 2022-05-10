@@ -63,5 +63,14 @@ export default {
         Toast.show('登录成功')
       }
     },
+    async registerAsync(dispatch, rootState, payload) {
+      const res = await Http({
+        url: '/user/register',
+        body: payload,
+      })
+      if (res) {
+        Toast.show('注册成功')
+      }
+    },
   },
 }
