@@ -4,7 +4,7 @@ export default {
     lists: ['a', 'b', 'c'],
   },
   'GET /api/getListsAsync': (req, res) => {
-    console.log('GET /api/getListsAsync', req)
+    // console.log('GET /api/getListsAsync', req)
     setTimeout(() => {
       res.json({
         status: 200,

@@ -1,6 +1,7 @@
-import { Http } from '@/utils'
+import { Http, cookie, urlGet } from '@/utils'
 import { Toast } from 'antd-mobile/es'
 import router from 'umi/router'
+
 export default {
   state: {
     id: undefined,
@@ -41,7 +42,7 @@ export default {
         url: '/user/edit',
         body: payload,
       })
-      console.log(payload)
+      // console.log(payload)
       if (res) {
         Toast.show({
           icon: 'success',
@@ -60,6 +61,8 @@ export default {
         body: payload,
       })
       if (res) {
+        router.push(urlGet('from'))
+        cookie.set('user', res)
         Toast.show('登录成功')
       }
     },
@@ -69,6 +72,8 @@ export default {
         body: payload,
       })
       if (res) {
+        cookie.set('user', res)
+        router.push(urlGet('from'))
         Toast.show('注册成功')
       }
     },

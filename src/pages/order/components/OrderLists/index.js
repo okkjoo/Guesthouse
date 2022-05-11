@@ -5,7 +5,7 @@ import { isEmpty } from '@/utils'
 import { ShowLoading } from '@/components'
 
 const OrderLists = props => {
-  console.log(props.showLoading)
+  // console.log(props.showLoading)
   return (
     <div>
       {isEmpty(props?.orders) ? (

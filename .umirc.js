@@ -16,11 +16,13 @@ export default {
           path: '/order',
           component: './order/index',
           title: '订单',
+          auth: true,
         },
         {
           path: '/user',
           component: './user/index',
           title: '我的',
+          auth: true,
         },
         {
           path: '/user/edit',

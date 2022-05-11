@@ -7,7 +7,7 @@ export default function(props) {
   useEffect(() => {}, [])
   const history = useHistory()
   const handleClick = id => {
-    console.log(id)
+    // console.log(id)
     history.push({
       pathname: 'house',
       query: { id },

@@ -2,7 +2,7 @@ import React from 'react'
 import { Form, Input, Button, Toast } from 'antd-mobile/es'
 import { createForm } from 'rc-form'
 import router from 'umi/router'
-import { useStoreHook, value } from 'think-react-store'
+import { useStoreHook } from 'think-react-store'
 
 import './index.less'
 
