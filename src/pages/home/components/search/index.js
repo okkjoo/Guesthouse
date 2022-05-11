@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, memo } from 'react'
 import { Picker, Button, Calendar, Toast } from 'antd-mobile/es'
 import dayjs from 'dayjs'
 import { useHistory } from 'react-router-dom'
 
-export default function(props) {
+function Search(props) {
   const { citys, citysLoading } = props
   const [cityShow, setCityShow] = useState(false)
   const [timeShow, setTimeShow] = useState(false)
@@ -121,3 +121,14 @@ export default function(props) {
     </div>
   )
 }
+const areaEqual = (preProps, nextProps) => {
+  // console.log(preProps, nextProps)
+  if (
+    preProps === nextProps &&
+    preProps.citysLoading === nextProps.citysLoading
+  ) {
+    return true
+  }
+  return false
+}
+export default memo(Search, areaEqual)

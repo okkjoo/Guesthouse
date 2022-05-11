@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { memo, useEffect } from 'react'
 import { Link } from 'umi'
 import { cookie } from '@/utils'
 
-export default function(props) {
+function Header(props) {
   useEffect(() => {
     // console.log(cookie.get('user'))
   }, [])
-
+  console.log('header render')
   return (
     <div className="header">
       <div className="header_title">睡好</div>
@@ -23,3 +23,4 @@ export default function(props) {
     </div>
   )
 }
+export default memo(Header)
