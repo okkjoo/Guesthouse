@@ -1,0 +1,31 @@
+.order-skeletons .order-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.order-skeletons .order-item .left {
+  width: 120px;
+  height: 80px;
+}
+.order-skeletons .order-item .center {
+  flex: 1;
+  margin: 0 12px;
+}
+.order-skeletons .order-item .center .price2 {
+  margin: 12px 0;
+  width: 50px;
+  padding: 0;
+}
+.order-skeletons .order-item .center .time {
+  width: 120px;
+}
+.order-skeletons .order-item .pay {
+  margin-right: 4px;
+  width: 70px;
+  height: 30px;
+}
