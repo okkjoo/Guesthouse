@@ -1,15 +1,15 @@
 import React from 'react'
 import OrderItem from '../OrderItem'
-import { SpinLoading } from 'antd-mobile/es'
 import { isEmpty } from '@/utils'
 import { ShowLoading } from '@/components'
+import { OrderSkeleton } from '@/skeletons'
 
 const OrderLists = props => {
   // console.log(props.showLoading)
   return (
     <div>
       {isEmpty(props?.orders) ? (
-        <SpinLoading />
+        <OrderSkeleton />
       ) : (
         <div className="tab-lists">
           {props?.orders.map(item => (
