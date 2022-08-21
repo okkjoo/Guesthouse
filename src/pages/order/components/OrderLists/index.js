@@ -19,13 +19,13 @@ const OrderLists = props => {
               {...item}
             />
           ))}
+          <ShowLoading
+            style={{ marginBottom: '20px', height: '100px' }}
+            showLoading={props.showLoading}
+            // showLoading={true}
+          />
         </div>
       )}
-      <ShowLoading
-        style={{ marginBottom: '20px', height: '100px' }}
-        showLoading={props.showLoading}
-        // showLoading={true}
-      />
     </div>
   )
 }
