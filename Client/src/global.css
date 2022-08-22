@@ -1,0 +1,42 @@
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+/* Skeletons */
+.skeletons {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  min-height: 20px;
+  background-color: #ededed;
+}
+.skeletons:empty::after {
+  display: block;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(216, 216, 216, 0.253),
+    transparent
+  );
+  animation: loading 1.5s infinite;
+}
+@keyframes loading {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 120%;
+  }
+}
