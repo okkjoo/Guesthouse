@@ -10,7 +10,7 @@ class UserService extends Service {
           username,
         },
       });
-      console.log('result', result);
+      // console.log('result', result);
       return result;
     } catch (error) {
       console.log('service user getUser error:', error);
