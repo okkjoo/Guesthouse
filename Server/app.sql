@@ -11,6 +11,6 @@ CREATE TABLE `user`(
   `phone` varchar(20) DEFAULT NULL comment '电话',
   `sign` varchar(300) DEFAULT NULL comment '用户签名',
   `createTime` TIMESTAMP DEFAULT NULL comment '创建时间',
-  `upadateTime` TIMESTAMP DEFAULT NULL comment '更新时间',
+  `updateTime` TIMESTAMP DEFAULT NULL comment '更新时间',
   PRIMARY KEY(`id`)
 )engine=InnoDB auto_increment=1 DEFAULT charset=utf8 comment='用户表';
