@@ -61,7 +61,7 @@ module.exports = appInfo => {
     port: '3306',
     user: 'root',
     password: '0000mysql',
-    database: 'egg',
+    database: 'egg_house',
     define: {
       timestamps: false,
       freezeTableName: true,
@@ -70,6 +70,7 @@ module.exports = appInfo => {
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
+    salt: 'zhou',
   };
 
   return {

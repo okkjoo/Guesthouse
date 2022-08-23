@@ -5,4 +5,5 @@
  */
 module.exports = app => {
   const { router, controller } = app;
+  router.post('/api/user/register', controller.user.register);
 };
