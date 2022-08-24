@@ -13,7 +13,7 @@ exports.ejs = {
 };
 
 exports.auth = {
-  enable: false,
+  enable: true,
   path: path.join(__dirname, '../lib/plugin/egg-auth'),
 };
 

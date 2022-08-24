@@ -40,10 +40,13 @@ module.exports = appInfo => {
 
   config.session = {
     key: 'ZHOU_SESS',
+    httpOnly: true,
+    maxAge: 1000 * 5,
+    renew: true,
   };
 
   config.auth = {
-    exclude: ['/', '/user', '/login', '/logout'],
+    exclude: ['/api/user/login', '/api/user/register'],
   };
 
   config.mysql = {
