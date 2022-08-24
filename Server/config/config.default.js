@@ -41,9 +41,11 @@ module.exports = appInfo => {
   config.session = {
     key: 'ZHOU_SESS',
   };
+
   config.auth = {
     exclude: ['/', '/user', '/login', '/logout'],
   };
+
   config.mysql = {
     app: true, // 是否将mysql挂载到app下
     agent: false, // 是否挂载在代理下面
@@ -55,6 +57,7 @@ module.exports = appInfo => {
       database: 'egg',
     },
   };
+
   config.sequelize = {
     dialect: 'mysql',
     host: '127.0.0.1',
@@ -67,6 +70,11 @@ module.exports = appInfo => {
       freezeTableName: true,
     },
   };
+
+  config.jwt = {
+    secret: 'zhou',
+  };
+
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
