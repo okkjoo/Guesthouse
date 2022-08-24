@@ -3,15 +3,25 @@ import { Toast } from 'antd-mobile/es'
 export default function Http({
   url, //请求路径
   method = 'post', //请求方式
-  headers, //请求头
+  headers = {}, //请求头
   body = {}, //请求体)
   setLoading,
   setResult,
 }) {
   setLoading && setLoading(true)
-  const defaultHeader = {
+
+  const token = localStorage.getItem('token')
+
+  let defaultHeader = {
     'Content-Type': 'application/json',
   }
+
+  defaultHeader = token
+    ? {
+        ...defaultHeader,
+        token,
+      }
+    : defaultHeader
 
   let params
   if (method.toUpperCase() === 'GET') {
@@ -20,7 +30,7 @@ export default function Http({
     params = {
       headers: {
         ...defaultHeader,
-        headers,
+        ...headers,
       },
       method,
       body: JSON.stringify(body),
