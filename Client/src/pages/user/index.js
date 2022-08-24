@@ -30,7 +30,10 @@ export default function(props) {
           设置
         </div>
         <div className="user">
-          <img alt="user" src={avatar} />
+          <img
+            alt="user"
+            src={avatar || require('../../assets/yay.jpg')}
+          />
           <div className="tel">{tel}</div>
           <div className="sign">{sign}</div>
         </div>
