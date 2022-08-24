@@ -7,7 +7,7 @@ const md5 = require('md5');
 class UserController extends Controller {
   async jwtSign() {
     const { ctx, app } = this;
-    const username = ctx.request.body;
+    const username = ctx.request.body.username;
     const token = app.jwt.sign(
       {
         username,
