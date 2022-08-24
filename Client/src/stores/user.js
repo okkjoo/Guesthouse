@@ -37,6 +37,7 @@ export default {
         })
       }
     },
+
     async editUserAsync(dispatch, rootState, payload) {
       const res = await Http({
         url: '/user/edit',
@@ -55,25 +56,28 @@ export default {
         router.push('/user')
       }
     },
+
     async loginAsync(dispatch, rootState, payload) {
       const res = await Http({
         url: '/user/login',
         body: payload,
       })
       if (res) {
-        router.push(urlGet('from'))
-        cookie.set('user', res)
+        urlGet('from') && router.push(urlGet('from'))
+        localStorage.setItem('token', res.token)
+        localStorage.setItem('username', res.username)
         Toast.show('登录成功')
       }
     },
+
     async registerAsync(dispatch, rootState, payload) {
       const res = await Http({
         url: '/user/register',
         body: payload,
       })
       if (res) {
-        cookie.set('user', res)
-        router.push(urlGet('from'))
+        localStorage.setItem('token', res.token)
+        localStorage.setItem('username', res.username)
         Toast.show('注册成功')
       }
     },
