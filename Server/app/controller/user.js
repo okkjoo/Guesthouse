@@ -9,7 +9,7 @@ class UserController extends Controller {
     const { ctx, app } = this;
     const params = ctx.request.body;
     const user = await ctx.service.user.getUser(params.username);
-    console.log('user', user);
+    // console.log('user', user);
     if (user) {
       ctx.body = {
         status: 500,
@@ -38,6 +38,31 @@ class UserController extends Controller {
       };
     }
   }
-}
 
+  async login() {
+    // console.log('login login');
+    const { ctx } = this;
+    const { username, password } = ctx.request.body;
+    const user = await ctx.service.user.getUser(
+      username,
+      password
+    );
+    // console.log('user:', user);
+    if (user) {
+      ctx.session.userId = user.id;
+      ctx.body = {
+        status: 200,
+        data: {
+          ...ctx.helper.unPick(user.dataValues, ['password']),
+          createTime: ctx.helper.timestamp(user.createTime),
+        },
+      };
+    } else {
+      ctx.body = {
+        status: 500,
+        errMsg: '该用户不存在',
+      };
+    }
+  }
+}
 module.exports = UserController;
