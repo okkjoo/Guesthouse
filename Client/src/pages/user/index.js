@@ -6,7 +6,7 @@ import './index.less'
 
 export default function(props) {
   const {
-    user: { username, avatar, tel, sign, getUserAsync },
+    user: { avatar, tel, sign, getUserAsync },
   } = useStoreHook()
   const history = useHistory()
   const handleClick = () => {
@@ -19,7 +19,8 @@ export default function(props) {
     getUserAsync({
       id: 15,
     })
-  }, [getUserAsync])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <div className="user-page">
