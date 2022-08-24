@@ -1,20 +1,26 @@
 import React, { useEffect } from 'react'
-import { List } from 'antd-mobile/es'
+import { List, Button } from 'antd-mobile/es'
 import { useHistory } from 'react-router-dom'
 import { useStoreHook } from 'think-react-store'
 import './index.less'
 
 export default function(props) {
   const {
-    user: { avatar, tel, sign, getUserAsync },
+    user: { avatar, tel, sign, getUserAsync, logoutAsync },
   } = useStoreHook()
   const history = useHistory()
+
   const handleClick = () => {
     history.push({
       pathname: 'user/edit',
       query: {},
     })
   }
+
+  const handleLogout = () => {
+    logoutAsync()
+  }
+
   useEffect(() => {
     getUserAsync({
       id: 15,
@@ -46,6 +52,12 @@ export default function(props) {
           <List.Item arrow={true}>联系客服</List.Item>
         </List>
       </div>
+      <Button
+        style={{ marginTop: '100px', width: '100vw' }}
+        onClick={handleLogout}
+      >
+        退出登录
+      </Button>
     </div>
   )
 }

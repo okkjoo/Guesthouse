@@ -103,5 +103,21 @@ class UserController extends Controller {
       };
     }
   }
+
+  async logout() {
+    const { ctx } = this;
+    try {
+      ctx.session[ctx.username] = null;
+      ctx.body = {
+        status: 200,
+        data: 'ok',
+      };
+    } catch (error) {
+      ctx.body = {
+        status: 500,
+        errMsg: '退出登录失败',
+      };
+    }
+  }
 }
 module.exports = UserController;

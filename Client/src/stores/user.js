@@ -81,5 +81,16 @@ export default {
         Toast.show('注册成功')
       }
     },
+
+    async logoutAsync(dispatch, rootState, payload) {
+      await Http({
+        url: '/user/logout',
+        body: payload,
+      })
+      Toast.show('已退出登录')
+      localStorage.clear()
+      // eslint-disable-next-line no-restricted-globals
+      location.href = '/login?from=' + location.pathname
+    },
   },
 }
