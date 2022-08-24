@@ -9,4 +9,13 @@ module.exports = {
     }
     return key ? this.request.body[key] : this.request.body;
   },
+
+  get username() {
+    const token = this.request.headers.token;
+    const tokenCache = token
+      ? this.app.jwt.verify(token, this.app.config.jwt.secret)
+      : undefined;
+    // console.log('tokenCache is', tokenCache);
+    return tokenCache ? tokenCache.username : undefined;
+  },
 };
