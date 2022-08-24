@@ -102,7 +102,7 @@ const cookie = {
         const key = a[0].trim()
         if (key !== '') {
           const val = decodeURIComponent(a[1])
-          obj[key] = isJsonString ? JSON.parse(val) : val
+          obj[key] = isJsonString(val) ? JSON.parse(val) : val
         }
       }
 
