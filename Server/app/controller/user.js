@@ -1,10 +1,10 @@
 /* eslint-disable array-bracket-spacing */
 'use strict';
 
-const Controller = require('egg').Controller;
 const md5 = require('md5');
+const BaseController = require('./base');
 
-class UserController extends Controller {
+class UserController extends BaseController {
   async jwtSign() {
     const { ctx, app } = this;
     // const username = ctx.request.body.username;
@@ -34,10 +34,7 @@ class UserController extends Controller {
     const user = await ctx.service.user.getUser(params.username);
     // console.log('user', user);
     if (user) {
-      ctx.body = {
-        status: 500,
-        errMsg: '用户已存在',
-      };
+      this.error('用户已存在');
       return;
     }
 
@@ -48,18 +45,12 @@ class UserController extends Controller {
     });
     if (result) {
       const token = await this.jwtSign();
-      ctx.body = {
-        status: 200,
-        data: {
-          ...this.parseResult(ctx, result),
-          token,
-        },
-      };
+      this.success({
+        ...this.parseResult(ctx, result),
+        token,
+      });
     } else {
-      ctx.body = {
-        status: 500,
-        errMsg: '注册用户失败',
-      };
+      this.error('注册用户失败');
     }
   }
 
@@ -74,18 +65,12 @@ class UserController extends Controller {
     // console.log('user:', user);
     if (user) {
       const token = await this.jwtSign();
-      ctx.body = {
-        status: 200,
-        data: {
-          ...this.parseResult(ctx, user),
-          token,
-        },
-      };
+      this.success({
+        ...this.parseResult(ctx, user),
+        token,
+      });
     } else {
-      ctx.body = {
-        status: 500,
-        errMsg: '该用户不存在',
-      };
+      this.error('该用户不存在');
     }
   }
 
@@ -95,17 +80,11 @@ class UserController extends Controller {
     const user = await ctx.service.user.getUser(ctx.username);
     console.log('user', user);
     if (user) {
-      ctx.body = {
-        status: 200,
-        data: {
-          ...this.parseResult(ctx, user),
-        },
-      };
+      this.success({
+        ...this.parseResult(ctx, user),
+      });
     } else {
-      ctx.body = {
-        status: 500,
-        errMsg: '该用户不存在',
-      };
+      this.error('该用户不存在');
     }
   }
 
@@ -113,15 +92,9 @@ class UserController extends Controller {
     const { ctx } = this;
     try {
       ctx.session[ctx.username] = null;
-      ctx.body = {
-        status: 200,
-        data: 'ok',
-      };
+      this.success('ok');
     } catch (error) {
-      ctx.body = {
-        status: 500,
-        errMsg: '退出登录失败',
-      };
+      this.error('退出登录失败');
     }
   }
 }
