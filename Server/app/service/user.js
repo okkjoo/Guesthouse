@@ -1,12 +1,12 @@
 /* eslint-disable indent */
 'use strict';
-const Service = require('egg').Service;
+const BaseService = require('./base.js');
 
 const md5 = require('md5');
 
-class UserService extends Service {
+class UserService extends BaseService {
   async getUser(username, password) {
-    try {
+    return this.run(async () => {
       const { ctx, app } = this;
       const _where = password
         ? {
@@ -17,23 +17,16 @@ class UserService extends Service {
       const result = await ctx.model.User.findOne({
         where: _where,
       });
-      // console.log('result', result);
       return result;
-    } catch (error) {
-      console.log('service user getUser error:', error);
-      return null;
-    }
+    });
   }
 
   async add(params) {
-    try {
+    return this.run(async () => {
       const { ctx } = this;
       const result = await ctx.model.User.create(params);
       return result;
-    } catch (error) {
-      console.log('service user add error:', error);
-      return null;
-    }
+    });
   }
 }
 
