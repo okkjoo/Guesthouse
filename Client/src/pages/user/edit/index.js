@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   List,
   ImageUploader,
@@ -8,13 +8,16 @@ import {
 } from 'antd-mobile/es'
 import { createForm } from 'rc-form'
 import { useStoreHook } from 'think-react-store'
+import getBase64Image from '@/utils'
 
 function Edit(props) {
-  const [fileList, setFileList] = useState([])
   const { getFieldProps, validateFields } = props.form
+
   const {
-    user: { editUserAsync },
+    user: { editUserAsync, getUserAsync, avatar, phone, sign },
   } = useStoreHook()
+
+  const [fileList, setFileList] = useState([{ url: avatar }])
 
   const beforeUpload = file => {
     if (file[0]?.size > 1024 * 1024 * 1) {
@@ -22,6 +25,14 @@ function Edit(props) {
       return null
     }
     return file
+  }
+
+  const handleUpload = file => {
+    // console.log(file)
+    return {
+      url: URL.createObjectURL(file),
+      // url: getBase64Image(file),
+    }
   }
 
   const handleSubmit = () => {
@@ -36,15 +47,20 @@ function Edit(props) {
         Toast.show('信息不能为空')
         return
       } else {
-        // console.log(val)
         editUserAsync({
-          img: fileList[0]?.file,
-          tel: val.tel,
+          avatar: fileList[0]?.url || null,
+          phone: val.tel,
           sign: val.sign,
         })
       }
     })
   }
+
+  useEffect(() => {
+    getUserAsync({})
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <div className="user-edit">
       <List>
@@ -54,6 +70,7 @@ function Edit(props) {
             maxCount={1}
             onChange={setFileList}
             beforeUpload={beforeUpload}
+            upload={handleUpload}
           />
         </List.Item>
         <List.Item>
@@ -61,6 +78,7 @@ function Edit(props) {
           <Input
             {...getFieldProps('tel', {
               rules: [{ required: true }],
+              initialValue: phone,
             })}
             placeholder="请输入手机号"
             clearable
@@ -71,7 +89,7 @@ function Edit(props) {
           <Input
             {...getFieldProps('sign', {
               rules: [{ require: true }],
-              initialValue: '这个人很懒，还没有签名',
+              initialValue: sign,
             })}
             placeholder="用一句话介绍自己吧~"
             clearable

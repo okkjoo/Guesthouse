@@ -1,4 +1,4 @@
-import { Http, cookie, urlGet } from '@/utils'
+import { Http, urlGet } from '@/utils'
 import { Toast } from 'antd-mobile/es'
 import router from 'umi/router'
 
@@ -7,7 +7,7 @@ export default {
     id: undefined,
     username: undefined,
     avatar: undefined,
-    tel: undefined,
+    phone: undefined,
     sign: undefined,
   },
   reducers: {
@@ -43,7 +43,7 @@ export default {
         url: '/user/edit',
         body: payload,
       })
-      // console.log(payload)
+      console.log(payload)
       if (res) {
         Toast.show({
           icon: 'success',

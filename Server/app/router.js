@@ -14,4 +14,5 @@ module.exports = app => {
     controller.user.detail
   );
   router.post('/api/user/logout', controller.user.logout);
+  router.post('/api/user/edit', controller.user.edit);
 };

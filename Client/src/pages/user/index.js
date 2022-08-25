@@ -6,7 +6,7 @@ import './index.less'
 
 export default function(props) {
   const {
-    user: { avatar, tel, sign, getUserAsync, logoutAsync },
+    user: { avatar, phone, sign, getUserAsync, logoutAsync },
   } = useStoreHook()
   const history = useHistory()
 
@@ -40,7 +40,7 @@ export default function(props) {
             alt="user"
             src={avatar || require('../../assets/yay.jpg')}
           />
-          <div className="tel">{tel}</div>
+          <div className="tel">{phone}</div>
           <div className="sign">{sign}</div>
         </div>
       </div>
