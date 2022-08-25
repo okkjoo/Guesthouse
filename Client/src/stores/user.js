@@ -43,7 +43,7 @@ export default {
         url: '/user/edit',
         body: payload,
       })
-      // console.log(payload)
+      console.log(payload)
       if (res) {
         Toast.show({
           icon: 'success',
