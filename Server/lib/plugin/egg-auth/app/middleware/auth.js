@@ -1,12 +1,11 @@
 /* eslint-disable no-unused-vars */
 'use strict';
 module.exports = options => {
-  console.log('option11', options);
   return async (ctx, next) => {
     const url = ctx.request.url;
-    const user = ctx.session[ctx.username];
-    console.log('user11', user);
-    console.log('session11', ctx.session);
+    const token = ctx.request.token; // extend里的request扩展
+    const username = ctx.session[ctx.username];
+    const user = username ? username === token : username;
     if (
       !user &&
       !options.exclude.includes(ctx.request.url.split('?')[0])

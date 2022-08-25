@@ -7,7 +7,8 @@ const md5 = require('md5');
 class UserController extends Controller {
   async jwtSign() {
     const { ctx, app } = this;
-    const username = ctx.request.body.username;
+    // const username = ctx.request.body.username;
+    const username = ctx.params('username');
     const token = app.jwt.sign(
       {
         username,
@@ -15,14 +16,21 @@ class UserController extends Controller {
       app.config.jwt.secret
     );
     // Mark the username inside
-    ctx.session[username] = 1;
+    ctx.session[username] = token;
 
     return token;
   }
 
+  parseResult(ctx, result) {
+    return {
+      ...ctx.helper.unPick(result.dataValues, ['password']),
+      createTime: ctx.helper.timestamp(result.createTime),
+    };
+  }
+
   async register() {
     const { ctx, app } = this;
-    const params = ctx.request.body;
+    const params = ctx.params();
     const user = await ctx.service.user.getUser(params.username);
     // console.log('user', user);
     if (user) {
@@ -43,8 +51,7 @@ class UserController extends Controller {
       ctx.body = {
         status: 200,
         data: {
-          ...ctx.helper.unPick(result.dataValues, ['password']),
-          createTime: ctx.helper.timestamp(result.createTime),
+          ...this.parseResult(ctx, result),
           token,
         },
       };
@@ -59,7 +66,7 @@ class UserController extends Controller {
   async login() {
     // console.log('login login');
     const { ctx } = this;
-    const { username, password } = ctx.request.body;
+    const { username, password } = ctx.params();
     const user = await ctx.service.user.getUser(
       username,
       password
@@ -70,8 +77,7 @@ class UserController extends Controller {
       ctx.body = {
         status: 200,
         data: {
-          ...ctx.helper.unPick(user.dataValues, ['password']),
-          createTime: ctx.helper.timestamp(user.createTime),
+          ...this.parseResult(ctx, user),
           token,
         },
       };
@@ -92,8 +98,7 @@ class UserController extends Controller {
       ctx.body = {
         status: 200,
         data: {
-          ...ctx.helper.unPick(user.dataValues, ['password']),
-          createTime: ctx.helper.timestamp(user.createTime),
+          ...this.parseResult(ctx, user),
         },
       };
     } else {
