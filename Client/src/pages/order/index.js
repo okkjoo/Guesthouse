@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Tabs } from 'antd-mobile/es'
 import OrderLists from './components/OrderLists'
-import { useHttpHook, useObserverHook } from '@/hooks'
+import { useObserverHook } from '@/hooks'
 import { CommonEnum } from '@/enums'
 import { Http, isEmpty } from '@/utils'
+import { ErrorBoundary } from '@/components'
 
 import './index.less'
 
@@ -79,22 +80,24 @@ export default function(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [type])
   return (
-    <div className="order-page">
-      <Tabs onChange={handleChange}>
-        {tabs.map(item => (
-          <Tabs.Tab
-            title={item.title}
-            key={item.key}
-            className="tab"
-          >
-            <OrderLists
-              showLoading={showLoading}
-              orders={item.orders}
-              type={item.type}
-            />
-          </Tabs.Tab>
-        ))}
-      </Tabs>
-    </div>
+    <ErrorBoundary>
+      <div className="order-page">
+        <Tabs onChange={handleChange}>
+          {tabs.map(item => (
+            <Tabs.Tab
+              title={item.title}
+              key={item.key}
+              className="tab"
+            >
+              <OrderLists
+                showLoading={showLoading}
+                orders={item.orders}
+                type={item.type}
+              />
+            </Tabs.Tab>
+          ))}
+        </Tabs>
+      </div>
+    </ErrorBoundary>
   )
 }

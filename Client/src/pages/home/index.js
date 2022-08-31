@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import Header from './components/header'
 import Search from './components/search'
 import Hot from './components/hot'
 import { useHttpHook } from '@/hooks'
+import { ErrorBoundary } from '@/components'
 
 import './index.less'
 
@@ -17,13 +18,15 @@ export default function(props) {
   useEffect(() => {}, [])
 
   return (
-    <div className="home">
-      {/* header登录区 */}
-      <Header />
-      {/* search搜索 */}
-      <Search citys={citys} citysLoading={citysLoading} />
-      {/* 热门酒店 */}
-      <Hot houses={houses} />
-    </div>
+    <ErrorBoundary>
+      <div className="home">
+        {/* header登录区 */}
+        <Header />
+        {/* search搜索 */}
+        <Search citys={citys} citysLoading={citysLoading} />
+        {/* 热门酒店 */}
+        <Hot houses={houses} />
+      </div>
+    </ErrorBoundary>
   )
 }

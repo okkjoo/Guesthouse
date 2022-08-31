@@ -1,4 +1,4 @@
-import { ErrorBoundary, MenuBar } from '@/components'
+import { MenuBar } from '@/components'
 import { useLocation } from 'react-router-dom'
 import { StoreProvider } from 'think-react-store'
 import * as store from '../stores'
@@ -14,7 +14,7 @@ function BasicLayout(props) {
         show={paths.includes(location.pathname)}
         pathname={location.pathname}
       />
-      <ErrorBoundary>{props.children}</ErrorBoundary>
+      {props.children}
     </StoreProvider>
   )
 }
