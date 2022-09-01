@@ -23,9 +23,11 @@ export default function(props) {
         {/* header登录区 */}
         <Header />
         {/* search搜索 */}
-        <Search citys={citys} citysLoading={citysLoading} />
+        {citys && (
+          <Search citys={citys} citysLoading={citysLoading} />
+        )}
         {/* 热门酒店 */}
-        <Hot houses={houses} />
+        {houses && <Hot houses={houses} />}
       </div>
     </ErrorBoundary>
   )
