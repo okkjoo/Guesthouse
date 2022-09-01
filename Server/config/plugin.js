@@ -22,6 +22,11 @@ exports.info = {
   path: path.join(__dirname, '../lib/plugin/egg-info'),
 };
 
+exports.notFound = {
+  enable: true,
+  path: path.join(__dirname, '../lib/plugin/egg-notFound'),
+};
+
 exports.mysql = {
   enable: true,
   package: 'egg-mysql',
