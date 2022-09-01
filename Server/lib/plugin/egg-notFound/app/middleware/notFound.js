@@ -12,7 +12,7 @@ module.exports = options => {
     } else {
       ctx.body = {
         status: 404,
-        errMsg: '当前接口不存在',
+        errMsg: `当前接口${ctx.request.url}不存在`,
       };
     }
   };
