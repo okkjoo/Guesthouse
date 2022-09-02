@@ -46,7 +46,12 @@ module.exports = appInfo => {
   };
 
   config.auth = {
-    exclude: ['/api/user/login', '/api/user/register'],
+    exclude: [
+      '/api/user/login',
+      '/api/user/register',
+      '/api/commons/citys',
+      '/api/house/hot',
+    ],
   };
 
   config.mysql = {
