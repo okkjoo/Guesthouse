@@ -12,7 +12,7 @@ export default function(props) {
     url: '/commons/citys',
   })
   const [houses] = useHttpHook({
-    url: '/houses/hot',
+    url: '/house/hot',
   })
   // !citysLoading && console.log('citys', citys[0])
   useEffect(() => {}, [])
