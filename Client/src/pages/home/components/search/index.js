@@ -23,7 +23,7 @@ function Search(props) {
   //     },
   //   ],
   // ])
-  const [selectedCity, setSelectedCity] = useState(['shenzhen'])
+  const [selectedCity, setSelectedCity] = useState(['10001'])
 
   const [times, setTimes] = useState('可选时间')
   const handleCitySelect = value => {
@@ -91,7 +91,8 @@ function Search(props) {
         }
 
         <div id="select-addr">
-          {citys &&
+          {!citysLoading &&
+            citys &&
             citys[0].find(item => selectedCity.includes(item.value))
               .label}
         </div>
