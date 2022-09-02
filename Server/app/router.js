@@ -18,4 +18,6 @@ module.exports = app => {
   router.post('/api/user/edit', controller.user.edit);
 
   router.post('/api/commons/citys', controller.commons.citys);
+
+  router.post('/api/house/hot', controller.house.hot);
 };

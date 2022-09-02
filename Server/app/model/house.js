@@ -20,5 +20,11 @@ module.exports = app => {
     endTime: DATE,
   });
 
+  House.associate = () => {
+    app.model.House.hasMany(app.model.Imgs, {
+      foreignKey: 'houseId',
+    });
+  };
+
   return House;
 };

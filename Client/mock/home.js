@@ -20,7 +20,7 @@ export default {
       ],
     })
   },
-  'post /api/houses/hot': (req, res) => {
+  'post /api/house/hot': (req, res) => {
     res.json({
       status: 200,
       data: [
