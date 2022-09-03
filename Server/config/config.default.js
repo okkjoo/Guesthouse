@@ -51,6 +51,7 @@ module.exports = appInfo => {
       '/api/user/register',
       '/api/commons/citys',
       '/api/house/hot',
+      '/api/house/search',
     ],
   };
 
