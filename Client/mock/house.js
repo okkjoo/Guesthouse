@@ -1,5 +1,5 @@
 export default {
-  'post /api/houses/search': (req, res) => {
+  'post /api/house/search': (req, res) => {
     let data
     if (req.body.pageNum < 4) {
       data = [

@@ -17,7 +17,7 @@ export default function(props) {
 
   // 这里的 loading 是要监听的，请求结束时再进行更新操作
   const [houses, loading] = useHttpHook({
-    url: '/houses/search',
+    url: '/house/search',
     // 携带的数据
     body: {
       ...page,
