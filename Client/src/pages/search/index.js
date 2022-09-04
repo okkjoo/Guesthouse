@@ -21,7 +21,7 @@ export default function(props) {
     // 携带的数据
     body: {
       ...page,
-      houseSubmitName,
+      houseName,
       code: query?.code,
       startTime: query?.startTime + ' 00:00:00',
       endTime: query?.endTime + ' 23:59:59',
@@ -119,11 +119,11 @@ export default function(props) {
               <img
                 alt="img"
                 className="item-img"
-                data-src={item.img}
+                data-src={item?.imgs[0].url}
                 src={require('../../assets/hui.png')}
               />
               <div className="item-right">
-                <div className="title">{item.title}</div>
+                <div className="title">{item.name}</div>
                 <div className="price">￥{item.price}</div>
               </div>
             </div>

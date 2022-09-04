@@ -9,6 +9,13 @@ class HouseController extends BaseController {
     // eslint-disable-next-line array-bracket-spacing
     this.success(result);
   }
+
+  async search() {
+    const { ctx } = this;
+    const result = await ctx.service.house.search(ctx.params());
+    // eslint-disable-next-line array-bracket-spacing
+    this.success(result);
+  }
 }
 
 module.exports = HouseController;
