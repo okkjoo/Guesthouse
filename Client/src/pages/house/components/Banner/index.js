@@ -20,7 +20,7 @@ const Banner = props => {
       <div className="swiper-wrapper">
         {props?.banner?.map(banner => (
           <div className="swiper-slide" key={banner.id}>
-            <img alt="banner" src={banner.src} />
+            <img alt="banner" src={banner.url} />
           </div>
         ))}
       </div>

@@ -48,7 +48,6 @@ export default function Http({
           if (res.status === 403) {
             // eslint-disable-next-line no-restricted-globals
             location.href = '/login?from=' + location.pathname
-            localStorage.clear()
           }
           Toast.show({
             icon: 'fail',

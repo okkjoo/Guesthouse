@@ -7,8 +7,8 @@ const Info = props => {
   // console.log('detail', detail)
   return (
     <div className="info">
-      <div className="info-title">{detail?.title}</div>
-      <div className="info-msg">简介: {detail?.msg}</div>
+      <div className="info-title">{detail?.name}</div>
+      <div className="info-msg">简介: {detail?.info}</div>
       <div className="info-price">价格: {detail?.price}</div>
       <div className="info-time">
         空房时间: {timer(detail?.startTime, '')} ~{' '}

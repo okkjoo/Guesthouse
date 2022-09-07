@@ -41,7 +41,7 @@ module.exports = appInfo => {
   config.session = {
     key: 'ZHOU_SESS',
     httpOnly: true,
-    maxAge: 60 * 60 * 24,
+    maxAge: 24 * 3600 * 1000,
     renew: true,
   };
 

@@ -13,11 +13,30 @@ module.exports = app => {
     info: STRING(150),
     address: STRING(200),
     price: INTEGER,
-    publishTime: DATE,
+    publishTime: {
+      type: DATE,
+      get() {
+        return new Date(
+          this.getDataValue('publishTime')
+        ).getTime();
+      },
+    },
     cityCode: STRING,
     showCount: INTEGER,
-    startTime: DATE,
-    endTime: DATE,
+    startTime: {
+      type: DATE,
+      get() {
+        return new Date(
+          this.getDataValue('startTime')
+        ).getTime();
+      },
+    },
+    endTime: {
+      type: DATE,
+      get() {
+        return new Date(this.getDataValue('endTime')).getTime();
+      },
+    },
   });
 
   House.associate = () => {
