@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import { Modal } from '@/components'
 import { TextArea, Button, Toast } from 'antd-mobile/es'
 import { useStoreHook } from 'think-react-store'
+import { useLocation } from 'react-router-dom'
 
 const Footer = () => {
-  // console.log('aaa')
   const [show, setShow] = useState(false)
-  // const [commentValue, setCommentValue] = useState('')
   const {
     house: { addCommentsAsync, getCommentsAsync },
   } = useStoreHook()
+  const { query } = useLocation()
 
   const handleClick = () => {
     setShow(!show)
@@ -25,10 +25,10 @@ const Footer = () => {
   // }
   const handleSubmit = () => {
     const commentValue = document.querySelector('textarea').value
-    console.log(commentValue)
     if (commentValue) {
       addCommentsAsync({
         commentValue,
+        houseId: query?.id,
       })
       handleClose()
       getCommentsAsync({})

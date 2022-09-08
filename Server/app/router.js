@@ -22,4 +22,6 @@ module.exports = app => {
   router.post('/api/house/hot', controller.house.hot);
   router.post('/api/house/search', controller.house.search);
   router.post('/api/house/detail', controller.house.detail);
+
+  router.post('/api/comment/add', controller.comment.add);
 };

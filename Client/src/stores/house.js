@@ -67,7 +67,7 @@ export default {
       let lists
       if (page.pageNum < 4) {
         lists = await Http({
-          url: '/comments/lists',
+          url: '/comment/lists',
           body: {
             ...payload,
             pageSize: page.pageSize,
@@ -88,7 +88,7 @@ export default {
     },
     async addCommentsAsync(dispatch, rootState, payload) {
       const res = await Http({
-        url: '/comments/add',
+        url: '/comment/add',
         body: payload,
       })
       if (res) {
