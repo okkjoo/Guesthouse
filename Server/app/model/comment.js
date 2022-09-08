@@ -14,6 +14,11 @@ module.exports = app => {
     msg: STRING(500),
     createTime: DATE,
   });
+  Comment.associate = () => {
+    app.model.Comment.belongsTo(app.model.User, {
+      foreignKey: 'userId',
+    });
+  };
 
   return Comment;
 };

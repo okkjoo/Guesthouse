@@ -15,6 +15,16 @@ class CommentController extends BaseController {
 
     this.success(result);
   }
+
+  async lists() {
+    const { ctx } = this;
+    const user = await ctx.service.user.getUser(ctx.username);
+    const result = await ctx.service.comment.lists(
+      ctx.params(),
+      user.id
+    );
+    this.success(result);
+  }
 }
 
 module.exports = CommentController;
