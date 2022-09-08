@@ -31,7 +31,7 @@ const Footer = () => {
         houseId: query?.id,
       })
       handleClose()
-      getCommentsAsync({})
+      getCommentsAsync({ id: query?.id })
     } else {
       Toast.show({
         icon: 'fail',
