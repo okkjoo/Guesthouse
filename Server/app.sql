@@ -68,3 +68,15 @@ INSERT INTO `imgs` VALUES
 (6,'https://dimg04.c-ctrip.com/images/0202l1200098zagu6E64E_R_300_225_R5_Q70_D.jpg',6,'2022-08-28 11:20:20'),
 (7,'https://dimg04.c-ctrip.com/images/200q1h000001hm83tE3C4_R_300_225_R5_Q70_D.jpg',7,'2022-08-28 11:20:20'),
 (8,'https://ac-a.static.booking.cn/xdata/images/hotel/270x200/292819265.webp?k=8b04b0d6c2a0795930cff2620592f6f88066a02ce085c433ce064c95d59ea454&o=',8,'2022-08-28 11:20:20');
+
+--- 订单表
+CREATE TABLE `orders` (
+  `id` int NOT NULL auto_increment,
+  `order_number` varchar(20) DEFAULT NULL comment '订单编号',
+  `userId` int not NULL comment '用户id',
+  `houseId` int not NULL comment '房屋id',
+  `isPayed` int DEFAULT 0 comment '是否支付： 0 表示未支付， 1 表示已支付',
+  `createTime` timestamp DEFAULT NULL comment '创建时间',
+  `updateTime` timestamp DEFAULT NULL comment '更新时间',
+  PRIMARY KEY(`id`)
+)engine=InnoDB auto_increment = 1 DEFAULT charset=utf8 comment='订单表';
