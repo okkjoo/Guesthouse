@@ -25,4 +25,10 @@ module.exports = app => {
 
   router.post('/api/comment/add', controller.comment.add);
   router.post('/api/comment/lists', controller.comment.lists);
+
+  router.post(
+    '/api/orders/hasOrder',
+    userExist,
+    controller.orders.hasOrder
+  );
 };
