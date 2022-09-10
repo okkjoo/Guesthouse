@@ -21,6 +21,14 @@ class OrderService extends BaseService {
       return result;
     });
   }
+  async delOrder(id) {
+    return this.run(async ctx => {
+      const result = await ctx.model.Orders.destroy({
+        where: { id },
+      });
+      return result;
+    });
+  }
 }
 
 module.exports = OrderService;
