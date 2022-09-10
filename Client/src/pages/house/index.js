@@ -21,10 +21,26 @@ const House = () => {
       getCommentsAsync,
       reloadComments,
       resetData,
+      order,
+      hasOrderAsync,
+      addOrderAsync,
+      delOrderAsync,
     },
   } = useStoreHook()
 
   const { query } = useLocation()
+
+  const handleBtnClick = id => {
+    if (!id) {
+      addOrderAsync({
+        id: query?.id,
+      })
+    } else {
+      delOrderAsync({
+        id: query?.id,
+      })
+    }
+  }
 
   useObserverHook(
     `#${CommonEnum.LOADING_ID}`,
@@ -65,13 +81,22 @@ const House = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+  useEffect(() => {
+    hasOrderAsync({
+      id: query?.id,
+    })
+  }, [hasOrderAsync, query.id])
   return (
     <div className="house-page">
       {/* 顶部 banner */}
       <Banner banner={detail?.banner} />
 
       {/* 房屋信息 */}
-      <Info detail={detail?.info} />
+      <Info
+        detail={detail?.info}
+        order={order}
+        btnClick={handleBtnClick}
+      />
 
       {/* 评论列表 */}
       <CommentList comments={comments} showLoading={showLoading} />

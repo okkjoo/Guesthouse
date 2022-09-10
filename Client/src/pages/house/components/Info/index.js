@@ -3,8 +3,51 @@ import { Button } from 'antd-mobile/es'
 import { timer } from '@/utils'
 
 const Info = props => {
-  const { detail } = props
-  // console.log('detail', detail)
+  const { detail, order, btnClick } = props
+
+  const handleOrder = id => {
+    btnClick(id)
+  }
+
+  const renderBtn = () => {
+    // order 中无id 表示 未预定
+    if (!order?.id) {
+      return (
+        <Button
+          className="info-btn"
+          color="warning"
+          onClick={() => {
+            handleOrder()
+          }}
+        >
+          预 订
+        </Button>
+      )
+    }
+    // 已有订单 未支付
+    if (order?.isPayed === 0) {
+      return (
+        <Button
+          className="info-btn"
+          color="success"
+          onClick={() => {
+            handleOrder(order.id)
+          }}
+        >
+          取消预订
+        </Button>
+      )
+    }
+    // 已支付
+    if (order?.isPayed === 1) {
+      return (
+        <Button className="info-btn" color="success">
+          准备入住
+        </Button>
+      )
+    }
+  }
+
   return (
     <div className="info">
       <div className="info-title">{detail?.name}</div>
@@ -15,9 +58,8 @@ const Info = props => {
         {timer(detail?.endTime, '')}
       </div>
       <div className="info-time"></div>
-      <Button className="info-btn" color="warning">
-        预 订
-      </Button>
+
+      {renderBtn()}
     </div>
   )
 }
