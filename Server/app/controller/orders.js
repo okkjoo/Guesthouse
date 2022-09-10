@@ -13,6 +13,18 @@ class OrdersController extends BaseController {
 
     this.success(res);
   }
+  async addOrder() {
+    const { ctx } = this;
+    const user = await ctx.service.user.getUser(ctx.username);
+    const res = await ctx.service.orders.addOrder({
+      userId: user.id,
+      houseId: ctx.params('id'),
+      isPayed: 0,
+      createTime: ctx.helper.time(),
+    });
+
+    this.success(res);
+  }
 }
 
 module.exports = OrdersController;

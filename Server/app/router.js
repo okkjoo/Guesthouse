@@ -31,4 +31,9 @@ module.exports = app => {
     userExist,
     controller.orders.hasOrder
   );
+  router.post(
+    '/api/orders/addOrder',
+    userExist,
+    controller.orders.addOrder
+  );
 };

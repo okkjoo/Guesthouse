@@ -15,6 +15,12 @@ class OrderService extends BaseService {
       return res;
     });
   }
+  async addOrder(parmas) {
+    return this.run(async ctx => {
+      const result = await ctx.model.Orders.create(parmas);
+      return result;
+    });
+  }
 }
 
 module.exports = OrderService;
