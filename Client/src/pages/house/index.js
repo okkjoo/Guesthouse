@@ -85,7 +85,8 @@ const House = () => {
     hasOrderAsync({
       id: query?.id,
     })
-  }, [hasOrderAsync, query.id])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query.id])
   return (
     <div className="house-page">
       {/* 顶部 banner */}
