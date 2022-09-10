@@ -3,7 +3,7 @@
 module.exports = app => {
   const { STRING, INTEGER, DATE } = app.Sequelize;
 
-  const Orders = app.define('orders', {
+  const Orders = app.model.define('orders', {
     id: {
       type: INTEGER,
       primaryKey: true,
