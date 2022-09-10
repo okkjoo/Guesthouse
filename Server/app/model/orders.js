@@ -17,7 +17,7 @@ module.exports = app => {
       type: DATE,
       get() {
         return new Date(
-          this.getDateValue('createTime')
+          this.getDataValue('createTime')
         ).getTime();
       },
     },
@@ -25,7 +25,7 @@ module.exports = app => {
       type: DATE,
       get() {
         return new Date(
-          this.getDateValue('updateTime')
+          this.getDataValue('updateTime')
         ).getTime();
       },
     },
