@@ -21,7 +21,7 @@ export default function(props) {
   // })
   const invokenHttp = async pageNum => {
     const res = await Http({
-      url: '/order/lists',
+      url: '/orders/lists',
       body: {
         ...page,
         pageNum,
