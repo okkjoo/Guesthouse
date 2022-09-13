@@ -32,7 +32,7 @@ export default function(props) {
   }
   const fetchOrder = async pageNum => {
     const res = await invokenHttp(pageNum)
-    if (!isEmpty(res) && res.length === page.pageSize) {
+    if (!isEmpty(res) && res.length <= page.pageSize) {
       setOrders(res)
       setShowLoading(true)
     } else {
