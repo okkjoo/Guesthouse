@@ -31,5 +31,13 @@ module.exports = app => {
     },
   });
 
+  /* 通过 house 连接 imgs */
+  Orders.associate = () => {
+    app.model.Orders.belongsTo(app.model.House, {
+      foreignKey: 'houseId',
+      as: 'house',
+    });
+  };
+
   return Orders;
 };

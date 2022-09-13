@@ -41,4 +41,9 @@ module.exports = app => {
     userExist,
     controller.orders.delOrder
   );
+  router.post(
+    '/api/orders/lists',
+    userExist,
+    controller.orders.lists
+  );
 };

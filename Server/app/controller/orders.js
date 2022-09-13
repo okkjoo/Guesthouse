@@ -34,6 +34,17 @@ class OrdersController extends BaseController {
     );
     this.success(res);
   }
+
+  async lists() {
+    const { ctx } = this;
+    const user = await ctx.service.user.getUser(ctx.username);
+    const res = await ctx.service.orders.lists({
+      ...ctx.params(),
+      userId: user.id,
+    });
+
+    this.success(res);
+  }
 }
 
 module.exports = OrdersController;
