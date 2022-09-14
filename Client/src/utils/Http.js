@@ -1,4 +1,5 @@
 import { Toast } from 'antd-mobile/es'
+import router from 'umi/router'
 
 export default function Http({
   url, //请求路径
@@ -46,8 +47,13 @@ export default function Http({
           setResult && setResult(res.data)
         } else {
           if (res.status === 403) {
-            // eslint-disable-next-line no-restricted-globals
-            location.href = '/login?from=' + location.pathname
+            router.push({
+              pathname: '/login',
+              query: {
+                // eslint-disable-next-line no-restricted-globals
+                from: location.pathname,
+              },
+            })
           }
           Toast.show({
             icon: 'fail',

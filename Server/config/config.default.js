@@ -52,6 +52,7 @@ module.exports = appInfo => {
       '/api/commons/citys',
       '/api/house/hot',
       '/api/house/search',
+      '/api/house/detail',
     ],
   };
 
