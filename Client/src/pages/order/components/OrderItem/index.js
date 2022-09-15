@@ -1,13 +1,24 @@
 import React from 'react'
-import { Button } from 'antd-mobile/es'
-import { timer } from '@/utils'
+import { Button, Toast } from 'antd-mobile/es'
+import { Http, timer } from '@/utils'
 
 const OrderItem = props => {
+  const handlePay = async () => {
+    const result = await Http({
+      url: '/orders/pay',
+      body: { id: props.id },
+    })
+    if (result) {
+      Toast.show('支付成功')
+      window.location.reload()
+    }
+  }
+
   const renderPay = () => {
     switch (props?.type) {
       case 0:
         return (
-          <Button color="warning" size="small">
+          <Button color="warning" size="small" onClick={handlePay}>
             去支付
           </Button>
         )

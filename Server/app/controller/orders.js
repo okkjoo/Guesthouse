@@ -45,6 +45,34 @@ class OrdersController extends BaseController {
 
     this.success(res);
   }
+
+  /* 用于模拟调用第三方支付 */
+  async invokePay(params) {
+    return {
+      orderNumber: params.id + new Date().getTime(),
+    };
+  }
+
+  async pay() {
+    const { ctx } = this;
+    const id = ctx.params('id');
+    const order = await ctx.model.Orders.findByPk(id);
+
+    if (order) {
+      try {
+        const beforePay = await this.invokePay({ id });
+        const res = ctx.service.orders.pay({
+          id,
+          orderNumber: beforePay.orderNumber,
+        });
+        this.success(res);
+      } catch (error) {
+        this.error('订单支付失败');
+      }
+    } else {
+      this.error('订单不存在');
+    }
+  }
 }
 
 module.exports = OrdersController;

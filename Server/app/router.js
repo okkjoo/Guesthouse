@@ -46,4 +46,9 @@ module.exports = app => {
     userExist,
     controller.orders.lists
   );
+  router.post(
+    '/api/orders/pay',
+    userExist,
+    controller.orders.pay
+  );
 };

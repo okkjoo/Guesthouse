@@ -49,7 +49,22 @@ class OrderService extends BaseService {
           },
         },
       });
-      console.log('res:', res);
+      return res;
+    });
+  }
+  async pay(params) {
+    return this.run(async ctx => {
+      const res = ctx.model.Orders.update(
+        {
+          isPayed: 1,
+          orderNumber: params.orderNumber,
+        },
+        {
+          where: {
+            id: params.id,
+          },
+        }
+      );
       return res;
     });
   }
