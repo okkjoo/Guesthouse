@@ -8,7 +8,6 @@ import {
 } from 'antd-mobile/es'
 import { createForm } from 'rc-form'
 import { useStoreHook } from 'think-react-store'
-import getBase64Image from '@/utils'
 
 function Edit(props) {
   const { getFieldProps, validateFields } = props.form
@@ -27,12 +26,16 @@ function Edit(props) {
     return file
   }
 
-  const handleUpload = file => {
-    // console.log(file)
-    return {
-      url: URL.createObjectURL(file),
-      // url: getBase64Image(file),
-    }
+  const handleUpload = async file => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader()
+      reader.readAsDataURL(file)
+      reader.onload = () => {
+        resolve({
+          url: reader.result,
+        })
+      }
+    })
   }
 
   const handleSubmit = () => {
