@@ -5,12 +5,11 @@ const md5 = require('md5');
 const BaseController = require('./base');
 
 class UserController extends BaseController {
-  async jwtSign() {
+  async jwtSign({ id, username }) {
     const { ctx, app } = this;
-    // const username = ctx.request.body.username;
-    const username = ctx.params('username');
     const token = app.jwt.sign(
       {
+        id,
         username,
       },
       app.config.jwt.secret
@@ -44,7 +43,10 @@ class UserController extends BaseController {
       createTime: ctx.helper.time(),
     });
     if (result) {
-      const token = await this.jwtSign();
+      const token = await this.jwtSign({
+        id: result.id,
+        username: result.username,
+      });
       this.success({
         ...this.parseResult(ctx, result),
         token,
@@ -64,7 +66,10 @@ class UserController extends BaseController {
     );
     // console.log('user:', user);
     if (user) {
-      const token = await this.jwtSign();
+      const token = await this.jwtSign({
+        id: user.id,
+        username: user.username,
+      });
       this.success({
         ...this.parseResult(ctx, user),
         token,
