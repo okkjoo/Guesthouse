@@ -41,7 +41,21 @@ react(umi)+egg 全栈 酒店平台
 
 ## appearance
 
+### 首页
+
+![1669386002868](image/README/1669386002868.png)
+
+### 详情
+
+![1669385917883](image/README/1669385917883.gif)
+
+### 订单
+
+![1669385791360](image/README/1669385791360.gif)
+
 ### user
+
+![1669385966598](image/README/1669385966598.png)
 
 ### login
 
