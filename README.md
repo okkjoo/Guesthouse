@@ -29,6 +29,24 @@ react(umi)+egg 全栈 酒店平台
 
 数据库：MySQL
 
+## play
+
+Client 文件夹下
+
+```js
+yarn start
+```
+
+Server 文件夹下：
+
+```js
+yarn dev
+```
+
+数据库自己建立运行 app.sql 上的命令
+
+> 自己看一下 `config.default.js` 下的 `config.mysql`
+
 ## 背景
 
 对全栈开发感兴趣
